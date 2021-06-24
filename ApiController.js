@@ -16,7 +16,7 @@ class ApiController {
     count = (req, res) => {
         if (req.cookies && req.cookies.count) {
             res.cookie('count', parseInt(req.cookies.count, 10) + 1);
-            return res.status(200).send({count: req.cookies.count + 1});
+            return res.status(200).send({count: parseInt(req.cookies.count) + 1});
         } else {
             res.cookie('count', 1);
             return res.status(200).send({count: 1});
@@ -26,9 +26,10 @@ class ApiController {
     joke = async (req, res) => {
         try {
             const response = await axios.get("https://api.jokes.one/jod");
-            res.code(200).send(response)
+            return  res.code(200).send(response)
         } catch (err) {
-            res.code(500).send({error: err})
+            console.log(err)
+            return res.code(500).send({error: err})
         }
     }
 }
