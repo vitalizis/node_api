@@ -6,3 +6,6 @@
     $ cd node_api
     $ npm i
     $ node index.js
+    
+### note:
+/joke has limit 10 requests per hour    
